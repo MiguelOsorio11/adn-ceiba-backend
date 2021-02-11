@@ -13,7 +13,7 @@ pipeline {
   //Una sección que define las herramientas “preinstaladas” en Jenkins
   tools {
     jdk 'JDK8_Centos' //Preinstalada en la Configuración del Master
-    gradle 'Gradle4.5_Centos' //Preinstalada en la Configuración del Master
+    gradle 'Gradle6.0.1_Centos' //Preinstalada en la Configuración del Master
   }
 
   //Aquí comienzan los “items” del Pipeline
@@ -22,25 +22,16 @@ pipeline {
       steps{
         echo "------------>Checkout<------------"
 		checkout([
-			$class: 'GitSCM', 
-			branches: [[name: '*/master']], 
-			doGenerateSubmoduleConfigurations: false, 
-			extensions: [], 
-			gitTool: 'Default', 
-			submoduleCfg: [], 
-			userRemoteConfigs: [[
-				credentialsId: 'GitHub_MiguelOsorio11', 
-				url:'https://github.com/MiguelOsorio11/adn-ceiba-backend'
-			]]
-		])
+		$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], gitTool: 'Default', submoduleCfg: [], userRemoteConfigs: [[
+        credentialsId: 'GitHub_MiguelOsorio11', url: 'https://github.com/MiguelOsorio11/adn-ceiba-backend']]])
       }
     }
     
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Unit Tests<------------"
-		sh 'gradle --b ./build.gradle clean'
-	    sh 'gradle --b ./build.gradle test'
+		sh 'gradle --b ./trabajodegrado/build.gradle clean compileJava'
+        sh 'gradle --b ./trabajodegrado/build.gradle test'
       }
     }
 
@@ -48,8 +39,7 @@ pipeline {
       steps{
         echo '------------>Análisis de código estático<------------'
         withSonarQubeEnv('Sonar') {
-			sh "${tool name: 'SonarScanner', 
-			type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
+			sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
         }
       }
     }
@@ -58,7 +48,7 @@ pipeline {
       steps {
         echo "------------>Build<------------"
 		//Construir sin tarea test que se ejecutó previamente
-		sh 'gradle --b ./build.gradle build -x test'
+		sh 'gradle --b ./trabajodegrado/build.gradle build -x test'
       }
     }  
   }
@@ -69,7 +59,7 @@ pipeline {
     }
     success {
       echo 'This will run only if successful'
-	  junit 'build/test-results/test/*.xml'
+	  junit 'trabajodegrado/dominio/build/test-results/test/*.xml'
     }
     failure {
       echo 'This will run only if failed'
