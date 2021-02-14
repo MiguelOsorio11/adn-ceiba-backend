@@ -23,6 +23,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(ComandoControladorTrabajoDeGrado.class)
 public class ComandoControladorTrabajoDeGradoTest {
 
+    private static final String URL_TRABAJO_GRADO = "/trabajodegrado";
+
     @Autowired
     private ObjectMapper objectMapper;
 
@@ -35,7 +37,7 @@ public class ComandoControladorTrabajoDeGradoTest {
         ComandoTrabajoDeGrado comandoTrabajoDeGrado = new ComandoTrabajoDeGradoTestDataBuilder().build();
 
         // act - assert
-        mockMvc.perform(post("/trabajodegrado")
+        mockMvc.perform(post(URL_TRABAJO_GRADO)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsBytes(comandoTrabajoDeGrado)))
                         .andExpect(status().isOk())
@@ -48,7 +50,7 @@ public class ComandoControladorTrabajoDeGradoTest {
         ComandoTrabajoDeGrado comandoTrabajoDeGrado = new ComandoTrabajoDeGradoTestDataBuilder().conDescripcion("descripcion").build();
 
         // act - assert
-        mockMvc.perform(put("/trabajodegrado")
+        mockMvc.perform(put(URL_TRABAJO_GRADO)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(comandoTrabajoDeGrado)))
                 .andExpect(status().isOk());
@@ -60,7 +62,7 @@ public class ComandoControladorTrabajoDeGradoTest {
         Long id = 1L;
 
         // act - assert
-        mockMvc.perform(delete("/trabajodegrado/{id}",id)
+        mockMvc.perform(delete(URL_TRABAJO_GRADO+"/{id}",id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
