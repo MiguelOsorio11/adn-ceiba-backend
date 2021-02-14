@@ -23,9 +23,8 @@ public class ServicioActualizarTrabajoDeGrado {
     }
 
     public void validarActualizacionNombre(TrabajoDeGrado trabajoDeGrado){
-        System.out.println("ENTRO ACTUALIZAR");
+
         boolean existeTrabajoDeGrado = this.repositorioTrabajoDeGrado.existeExcluyendoId(trabajoDeGrado.getId(), trabajoDeGrado.getNombre());
-        System.out.println("existeTrabajoDeGrado "+existeTrabajoDeGrado);
         if(existeTrabajoDeGrado){
             throw new ExcepcionDuplicidad(NOMBRE_DE_TRABAJO_DE_GRADO_EXISTENTE);
         }
