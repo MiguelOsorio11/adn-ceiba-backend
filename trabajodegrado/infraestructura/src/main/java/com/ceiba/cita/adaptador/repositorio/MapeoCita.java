@@ -8,15 +8,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
-public class MapeoCine implements RowMapper<Cita>, MapperResult {
+public class MapeoCita implements RowMapper<Cita>, MapperResult {
 
     @Override
     public Cita mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
         Long id = resultSet.getLong("id");
-        Long idUsuario = resultSet.getLong("id_trabajo_grado");
+        Long idTrabajoDeGrado = resultSet.getLong("id_trabajo_grado");
         LocalDateTime fechaCita = extraerLocalDateTime(resultSet,"fecha_cita");
 
-        return new Cita(id,idUsuario,fechaCita);
+        return new Cita(id,idTrabajoDeGrado,fechaCita);
     }
 }

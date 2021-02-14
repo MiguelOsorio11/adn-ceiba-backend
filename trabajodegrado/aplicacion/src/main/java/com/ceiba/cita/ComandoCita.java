@@ -14,6 +14,6 @@ import java.time.LocalDateTime;
 public class ComandoCita {
 
     private Long id;
-    private Long idUsuario;
+    private Long idTrabajoDeGrado;
     private LocalDateTime fechaCita;
 }
