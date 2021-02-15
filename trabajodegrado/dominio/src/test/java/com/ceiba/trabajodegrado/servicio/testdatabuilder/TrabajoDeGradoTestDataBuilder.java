@@ -8,17 +8,13 @@ import java.time.LocalDateTime;
 
 public class TrabajoDeGradoTestDataBuilder {
 
-    private static final Long ID = 1L;
     private static final Long ID_USUARIO = 1L;
     private static final String NOMBRE = "Proyecto mimercado.com";
     private static final String DESCRIPCION = "realizar documento arquitectura app";
     private static final String ESTADO = EstadoTrabajoDeGradoEnum.EN_ESPERA.getMensaje();
     private static final BigDecimal VALOR = new BigDecimal(200000);
-    private static final LocalDateTime FECHA_CONFIRMACION = LocalDateTime.of(2021,02,12,12,30);
 
     private static final BigDecimal VALOR_MENOR = new BigDecimal(100000);
-
-
 
     private Long id;
     private Long idUsuario;
@@ -29,7 +25,6 @@ public class TrabajoDeGradoTestDataBuilder {
     private LocalDateTime fechaConfirmacion;
 
     public TrabajoDeGradoTestDataBuilder(){
-        id = ID;
         idUsuario = ID_USUARIO;
         nombre = NOMBRE;
         descripcion = DESCRIPCION;
@@ -38,12 +33,7 @@ public class TrabajoDeGradoTestDataBuilder {
     }
 
     public TrabajoDeGrado build(){
-        return new TrabajoDeGrado(id,idUsuario,nombre,descripcion,estado,valor,fechaConfirmacion);
-    }
-
-    public TrabajoDeGradoTestDataBuilder conFechaConfirmacionCorrecta(){
-        this.fechaConfirmacion = FECHA_CONFIRMACION;
-        return this;
+        return new TrabajoDeGrado(idUsuario,nombre,descripcion,estado,valor);
     }
 
     public TrabajoDeGradoTestDataBuilder conValorMenor(){
