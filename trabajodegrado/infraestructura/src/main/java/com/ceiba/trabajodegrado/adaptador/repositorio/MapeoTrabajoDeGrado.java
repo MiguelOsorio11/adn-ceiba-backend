@@ -14,13 +14,11 @@ public class MapeoTrabajoDeGrado implements RowMapper<TrabajoDeGrado> , MapperRe
     @Override
     public TrabajoDeGrado mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
-        Long id = resultSet.getLong("id");
         Long idUsuario = resultSet.getLong("id_usuario");
         String nombre = resultSet.getString("nombre");
         String descripcion = resultSet.getString("descripcion");
         String estado = resultSet.getString("estado");
         BigDecimal valor = resultSet.getBigDecimal("valor");
-        LocalDateTime fechaConfirmacion = extraerLocalDateTime(resultSet, "fecha_confirmacion");
-        return new TrabajoDeGrado(id,idUsuario,nombre,descripcion,estado,valor,fechaConfirmacion);
+        return new TrabajoDeGrado(idUsuario,nombre,descripcion,estado,valor);
     }
 }

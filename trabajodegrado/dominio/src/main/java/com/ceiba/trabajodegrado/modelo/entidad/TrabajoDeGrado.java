@@ -10,9 +10,10 @@ import java.time.LocalDateTime;
 @Getter
 public class TrabajoDeGrado {
 
-    private static final String INGRESO_DE_NOMBRE = "Se debe ingresar el nombre del proyecto";
+    private static final String INGRESO_DE_NOMBRE = "Se debe ingresar el nombre del trabajo de grado";
+    private static final String INGRESO_DE_ESTADO = "Se debe ingresar el estado del trabajo de grado";
+    private static final String INGRESO_DE_VALOR = "Se debe ingresar el valor del trabajo de grado";
 
-    private Long id;
     private Long idUsuario;
     private String nombre;
     private String descripcion;
@@ -20,22 +21,21 @@ public class TrabajoDeGrado {
     private BigDecimal valor;
     private LocalDateTime fechaConfirmacion;
 
-    public TrabajoDeGrado(Long id, Long idUsuario, String nombre, String descripcion, String estado, BigDecimal valor, LocalDateTime fechaConfirmacion) {
+    public TrabajoDeGrado(Long idUsuario, String nombre, String descripcion, String estado, BigDecimal valor) {
         validarObligatorio(nombre,INGRESO_DE_NOMBRE);
-        this.id = id;
+        validarObligatorio(estado, INGRESO_DE_ESTADO);
+        validarObligatorio(estado, INGRESO_DE_ESTADO);
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
         this.valor = valor;
-        this.fechaConfirmacion = fechaConfirmacion;
     }
 
     @Override
     public String toString() {
         return "TrabajoDeGrado{" +
-                "id=" + id +
-                ", idUsuario=" + idUsuario +
+                "idUsuario=" + idUsuario +
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", estado='" + estado + '\'' +

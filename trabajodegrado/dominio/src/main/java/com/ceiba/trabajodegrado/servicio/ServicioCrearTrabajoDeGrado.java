@@ -35,7 +35,7 @@ public class ServicioCrearTrabajoDeGrado {
 
     private void validarValorMinimo(TrabajoDeGrado trabajoDeGrado){
 
-        if (trabajoDeGrado.getValor().compareTo(minimoValorPorTrabajoDeGrado) == -1)
+        if (trabajoDeGrado.getValor().compareTo(minimoValorPorTrabajoDeGrado) < 0)
             throw new ExcepcionValorInvalido(VALOR_MINIMO);
     }
 }
