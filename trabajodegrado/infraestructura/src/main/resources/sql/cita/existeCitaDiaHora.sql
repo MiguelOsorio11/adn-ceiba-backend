@@ -1,3 +1,1 @@
-SELECT count(*)
-FROM CITA
-WHERE datediff(fecha_cita, :fechaCita) = 0 AND timediff(fecha_cita , :fechaCita) = 0;
+SELECT count(1) from cita where fecha_cita = :fechaCita
