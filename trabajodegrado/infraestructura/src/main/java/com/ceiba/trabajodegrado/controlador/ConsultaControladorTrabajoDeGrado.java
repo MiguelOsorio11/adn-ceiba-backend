@@ -26,7 +26,7 @@ public class ConsultaControladorTrabajoDeGrado {
     @ApiOperation(
             value = "Listar trabajos de grado",
             notes = "Lista todos los paquetes turisticos existentes en el sistema")
-    List<DtoTrabajoDeGrado> listar(@PathVariable Long idUsuario){
+    public List<DtoTrabajoDeGrado> listar(@PathVariable Long idUsuario){
         return this.manejadorListarTrabajoDeGrado.ejecutar(idUsuario);
     }
 }
