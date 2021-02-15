@@ -4,7 +4,6 @@ import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.trabajodegrado.modelo.entidad.TrabajoDeGrado;
 import com.ceiba.trabajodegrado.puerto.repositorio.RepositorioTrabajoDeGrado;
 
-import java.util.Optional;
 
 public class ServicioActualizarTrabajoDeGrado {
 

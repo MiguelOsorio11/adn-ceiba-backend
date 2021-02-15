@@ -3,7 +3,6 @@ package com.ceiba.trabajodegrado.adaptador.repositorio;
 import com.ceiba.infraestructura.jdbc.MapperResult;
 import com.ceiba.trabajodegrado.modelo.entidad.TrabajoDeGrado;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.sql.ResultSet;
