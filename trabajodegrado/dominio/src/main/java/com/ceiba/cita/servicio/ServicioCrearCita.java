@@ -3,7 +3,6 @@ package com.ceiba.cita.servicio;
 import com.ceiba.cita.modelo.entidad.Cita;
 import com.ceiba.cita.puerto.repositorio.RepositorioCita;
 import com.ceiba.dominio.excepcion.ExcepcionCitaInvalida;
-import org.junit.jupiter.api.parallel.Resources;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -14,8 +13,8 @@ import java.util.Set;
 
 public class ServicioCrearCita {
 
-    public final static String ERROR_CITA_FIN_DE_SEMANA ="La cita solo se puede agendar de lunes a viernes";
-    public final static String EXISTECIA_HORA_CITA = "Ya se encuentra seleccionada la hora de la cita";
+    public static final String ERROR_CITA_FIN_DE_SEMANA ="La cita solo se puede agendar de lunes a viernes";
+    public static final String EXISTECIA_HORA_CITA = "Ya se encuentra seleccionada la hora de la cita";
 
 
     private RepositorioCita repositorioCine;
