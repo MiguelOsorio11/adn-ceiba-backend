@@ -23,4 +23,17 @@ public class ServicioActualizarTrabajoDeGradoTest {
         BasePrueba.assertThrows(() -> servicioActualizarTrabajoDeGrado.ejecutar(trabajoDeGrado), ExcepcionDuplicidad.class, ServicioActualizarTrabajoDeGrado.NOMBRE_DE_TRABAJO_DE_GRADO_EXISTENTE);
     }
 
+    @Test
+    public void validacionActualizacionTrabajoDeGradoTest(){
+        //arrange
+        TrabajoDeGrado trabajoDeGrado = new TrabajoDeGradoTestDataBuilder().build();
+        RepositorioTrabajoDeGrado repositorioTrabajoDeGrado = Mockito.mock(RepositorioTrabajoDeGrado.class);
+
+        Mockito.when(repositorioTrabajoDeGrado.existeExcluyendoId(trabajoDeGrado.getId(), trabajoDeGrado.getNombre())).thenReturn(Boolean.FALSE);
+
+        //act - arrange
+        ServicioActualizarTrabajoDeGrado servicioActualizarTrabajoDeGrado = new ServicioActualizarTrabajoDeGrado(repositorioTrabajoDeGrado);
+        servicioActualizarTrabajoDeGrado.ejecutar(trabajoDeGrado);
+    }
+
 }
