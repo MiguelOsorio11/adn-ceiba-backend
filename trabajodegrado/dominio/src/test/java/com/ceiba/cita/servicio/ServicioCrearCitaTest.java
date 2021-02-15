@@ -7,8 +7,6 @@ import com.ceiba.cita.servicio.testdatabuilder.CitaTestDataBuilder;
 import static org.junit.Assert.assertEquals;
 
 import com.ceiba.dominio.excepcion.ExcepcionCitaInvalida;
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
-import com.ceiba.trabajodegrado.servicio.ServicioCrearTrabajoDeGrado;
 import org.junit.Test;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.mock;
