@@ -3,11 +3,11 @@ package com.ceiba.trabajodegrado.controlador;
 import com.ceiba.ApplicationMock;
 import com.ceiba.trabajodegrado.comando.ComandoTrabajoDeGrado;
 import com.ceiba.trabajodegrado.servicio.testdatabuilder.ComandoTrabajoDeGradoTestDataBuilder;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
@@ -21,6 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ApplicationMock.class)
 @WebMvcTest(ComandoControladorTrabajoDeGrado.class)
+@AutoConfigureMockMvc(addFilters = false)
 public class ComandoControladorTrabajoDeGradoTest {
 
     private static final String URL_TRABAJO_GRADO = "/trabajodegrado";
@@ -41,7 +42,7 @@ public class ComandoControladorTrabajoDeGradoTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsBytes(comandoTrabajoDeGrado)))
                         .andExpect(status().isOk())
-                        .andExpect(content().json("{'valor': 1}"));
+                        .andExpect(content().json("{'valor': 2}"));
     }
 
     @Test

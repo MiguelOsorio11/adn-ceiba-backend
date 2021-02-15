@@ -25,9 +25,9 @@ public class DaoTrabajoDeGradoMysql implements DaoTrabajoDeGrado {
 
     @Override
     public List<DtoTrabajoDeGrado> listar(Long idUsuario) {
+
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("idUsuario", idUsuario);
-
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(slqListar, paramSource, new MapeoTrabajoDeGrado());
     }
 }

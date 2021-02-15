@@ -18,7 +18,7 @@ public class MapeoTrabajoDeGrado implements RowMapper<DtoTrabajoDeGrado>, Mapper
         Long id = resultSet.getLong("id");
         Long idUsuario = resultSet.getLong("id_usuario");
         String nombre = resultSet.getString("nombre");
-        String descripcion = resultSet.getString("nombre");
+        String descripcion = resultSet.getString("descripcion");
         String estado = resultSet.getString("estado");
         BigDecimal valor = resultSet.getBigDecimal("valor");
         LocalDateTime fechaConfirmacion = extraerLocalDateTime(resultSet,"fecha_confirmacion");
