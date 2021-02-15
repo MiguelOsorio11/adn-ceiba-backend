@@ -1,6 +1,7 @@
-package com.ceiba.puntotrabajodegrado.controlador;
+package com.ceiba.cita.controlador;
 
 import com.ceiba.ApplicationMock;
+import com.ceiba.puntotrabajodegrado.controlador.ConsultaControladorPuntoTrabajoDeGrado;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ApplicationMock.class)
-@WebMvcTest(ConsultaControladorPuntoTrabajoDeGrado.class)
-public class ConsultaControladorPuntoTrabajoDeGradoTest {
+@WebMvcTest(ConsultaControladorCine.class)
+public class ConsultaControladorCitaTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -28,7 +30,7 @@ public class ConsultaControladorPuntoTrabajoDeGradoTest {
         //arrenge
 
         //act - assert
-        mockMvc.perform(get("/puntostrabajodegrado")
+        mockMvc.perform(get("/cita")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)));;

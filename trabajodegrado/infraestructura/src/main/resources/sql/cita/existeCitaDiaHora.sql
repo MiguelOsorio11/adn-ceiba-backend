@@ -1,0 +1,1 @@
+SELECT count(1) from cita where fecha_cita = :fechaCita

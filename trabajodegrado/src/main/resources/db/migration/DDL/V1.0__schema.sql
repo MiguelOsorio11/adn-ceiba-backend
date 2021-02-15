@@ -25,3 +25,12 @@ create table trabajodegrado (
 );
 
 Alter table trabajodegrado ADD FOREIGN KEY (id_usuario) REFERENCES usuario(id);
+
+create table cita (
+ id int(11) not null auto_increment,
+ id_trabajo_grado int(11) not null,
+ fecha_cita datetime not null,
+ primary key(id)
+);
+
+Alter table cita ADD FOREIGN KEY (id_trabajo_grado) REFERENCES trabajodegrado(id);

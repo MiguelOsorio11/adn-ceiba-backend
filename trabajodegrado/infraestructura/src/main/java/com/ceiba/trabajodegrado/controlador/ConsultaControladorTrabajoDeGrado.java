@@ -23,7 +23,7 @@ public class ConsultaControladorTrabajoDeGrado {
         this.manejadorListarTrabajoDeGrado = manejadorListarTrabajoDeGrado;
     }
 
-    @GetMapping(value = {"/idUsuario"} )
+    @GetMapping(value = {"/{idUsuario}"} )
     @ApiOperation(
             value = "Listar trabajos de grado",
             notes = "Lista todos los paquetes turisticos existentes en el sistema")

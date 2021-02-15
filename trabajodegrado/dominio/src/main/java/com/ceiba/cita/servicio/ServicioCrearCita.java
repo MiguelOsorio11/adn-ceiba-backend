@@ -3,9 +3,14 @@ package com.ceiba.cita.servicio;
 import com.ceiba.cita.modelo.entidad.Cita;
 import com.ceiba.cita.puerto.repositorio.RepositorioCita;
 import com.ceiba.dominio.excepcion.ExcepcionCitaInvalida;
+import org.junit.jupiter.api.parallel.Resources;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoField;
+import java.util.EnumSet;
+import java.util.Set;
 
 public class ServicioCrearCita {
 
@@ -28,8 +33,13 @@ public class ServicioCrearCita {
 
     private void validarDiaEntreSemana(LocalDateTime fechaCita){
 
-        if(fechaCita.getDayOfWeek().equals(DayOfWeek.SATURDAY) || fechaCita.getDayOfWeek().equals(DayOfWeek.SUNDAY))
+        LocalDate date = fechaCita.toLocalDate();
+        DayOfWeek dayOfWeek = DayOfWeek.of(date.get(ChronoField.DAY_OF_WEEK));
+        Set<DayOfWeek> weekend = EnumSet.of( DayOfWeek.SATURDAY , DayOfWeek.SUNDAY );
+
+        if(weekend.contains(dayOfWeek))
             throw new ExcepcionCitaInvalida(ERROR_CITA_FIN_DE_SEMANA);
+
     }
 
     private void validarExistenciaCita(LocalDateTime fechaCita){
