@@ -60,7 +60,7 @@ public class ComandoControladorTrabajoDeGradoTest {
     @Test
     public void eliminar() throws Exception {
         // arrange
-        Long id = 1L;
+        Long id = 2L;
 
         // act - assert
         mockMvc.perform(delete(URL_TRABAJO_GRADO+"/{id}",id)

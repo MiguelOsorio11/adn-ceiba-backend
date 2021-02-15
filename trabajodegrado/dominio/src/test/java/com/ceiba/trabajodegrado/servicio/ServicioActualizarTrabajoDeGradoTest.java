@@ -16,7 +16,7 @@ public class ServicioActualizarTrabajoDeGradoTest {
         TrabajoDeGrado trabajoDeGrado = new TrabajoDeGradoTestDataBuilder().build();
         RepositorioTrabajoDeGrado repositorioTrabajoDeGrado = Mockito.mock(RepositorioTrabajoDeGrado.class);
 
-        Mockito.when(repositorioTrabajoDeGrado.existe(trabajoDeGrado.getNombre())).thenReturn(Boolean.TRUE);
+        Mockito.when(repositorioTrabajoDeGrado.existeExcluyendoId(trabajoDeGrado.getId(), trabajoDeGrado.getNombre())).thenReturn(Boolean.TRUE);
 
         ServicioActualizarTrabajoDeGrado servicioActualizarTrabajoDeGrado = new ServicioActualizarTrabajoDeGrado(repositorioTrabajoDeGrado);
         // act- arrange
