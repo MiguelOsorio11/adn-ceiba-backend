@@ -4,7 +4,6 @@ import com.ceiba.infraestructura.jdbc.MapperResult;
 import com.ceiba.trabajodegrado.modelo.dto.DtoTrabajoDeGrado;
 import org.springframework.jdbc.core.RowMapper;
 
-import javax.swing.tree.TreePath;
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
