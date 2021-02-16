@@ -15,8 +15,8 @@ public class TrabajoDeGradoTestDataBuilder {
     private static final BigDecimal VALOR = new BigDecimal(200000);
 
     private static final BigDecimal VALOR_MENOR = new BigDecimal(100000);
+    private static final BigDecimal VALOR_MENOR_CERO= new BigDecimal(-10000);
 
-    private Long id;
     private Long idUsuario;
     private String nombre;
     private String descripcion;
@@ -39,6 +39,26 @@ public class TrabajoDeGradoTestDataBuilder {
     public TrabajoDeGradoTestDataBuilder conValorMenor(){
         this.valor = VALOR_MENOR;
         return this;
+    }
+
+    public TrabajoDeGrado conBuildExcepcionValorMenorAcero(){
+        return new TrabajoDeGrado(idUsuario,nombre,descripcion,estado,VALOR_MENOR_CERO);
+    }
+
+    public TrabajoDeGrado conIdUsuarioNull(){
+        return new TrabajoDeGrado(null,nombre,descripcion,estado,VALOR_MENOR_CERO);
+    }
+
+    public TrabajoDeGrado conNombreNull(){
+        return new TrabajoDeGrado(idUsuario,null,descripcion,estado,VALOR_MENOR_CERO);
+    }
+
+    public TrabajoDeGrado conEstadoNull(){
+        return new TrabajoDeGrado(idUsuario,nombre,descripcion,null,VALOR_MENOR_CERO);
+    }
+
+    public TrabajoDeGrado conValorNull(){
+        return new TrabajoDeGrado(idUsuario,nombre,descripcion,estado,null);
     }
 
 }

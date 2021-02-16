@@ -4,6 +4,8 @@ import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.trabajodegrado.modelo.entidad.TrabajoDeGrado;
 import com.ceiba.trabajodegrado.puerto.repositorio.RepositorioTrabajoDeGrado;
 
+import java.time.LocalDateTime;
+
 
 public class ServicioActualizarTrabajoDeGrado {
 
@@ -15,10 +17,10 @@ public class ServicioActualizarTrabajoDeGrado {
         this.repositorioTrabajoDeGrado = repositorioTrabajoDeGrado;
     }
 
-    public void ejecutar(Long idTrabajoDeGrado, TrabajoDeGrado trabajoDeGrado){
+    public void ejecutar(Long idTrabajoDeGrado, TrabajoDeGrado trabajoDeGrado, LocalDateTime fechaConfirmacion){
 
         validarActualizacionNombre(idTrabajoDeGrado,trabajoDeGrado);
-        this.repositorioTrabajoDeGrado.actualizar(trabajoDeGrado);
+        this.repositorioTrabajoDeGrado.actualizar(idTrabajoDeGrado,trabajoDeGrado,fechaConfirmacion);
     }
 
     public void validarActualizacionNombre(Long idTrabajoDeGrado, TrabajoDeGrado trabajoDeGrado){

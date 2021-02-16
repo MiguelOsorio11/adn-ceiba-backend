@@ -8,6 +8,8 @@ import com.ceiba.trabajodegrado.servicio.testdatabuilder.TrabajoDeGradoTestDataB
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import java.time.LocalDateTime;
+
 public class ServicioActualizarTrabajoDeGradoTest {
 
     @Test
@@ -21,13 +23,14 @@ public class ServicioActualizarTrabajoDeGradoTest {
 
         ServicioActualizarTrabajoDeGrado servicioActualizarTrabajoDeGrado = new ServicioActualizarTrabajoDeGrado(repositorioTrabajoDeGrado);
         // act- arrange
-        BasePrueba.assertThrows(() -> servicioActualizarTrabajoDeGrado.ejecutar(id,trabajoDeGrado), ExcepcionDuplicidad.class, ServicioActualizarTrabajoDeGrado.NOMBRE_DE_TRABAJO_DE_GRADO_EXISTENTE);
+        BasePrueba.assertThrows(() -> servicioActualizarTrabajoDeGrado.ejecutar(id,trabajoDeGrado,LocalDateTime.now()), ExcepcionDuplicidad.class, ServicioActualizarTrabajoDeGrado.NOMBRE_DE_TRABAJO_DE_GRADO_EXISTENTE);
     }
 
     @Test
     public void validacionActualizacionTrabajoDeGradoTest(){
         //arrange
         Long id = 1L;
+        LocalDateTime fechaConfirmacion = LocalDateTime.now();
         TrabajoDeGrado trabajoDeGrado = new TrabajoDeGradoTestDataBuilder().build();
         RepositorioTrabajoDeGrado repositorioTrabajoDeGrado = Mockito.mock(RepositorioTrabajoDeGrado.class);
 
@@ -35,7 +38,7 @@ public class ServicioActualizarTrabajoDeGradoTest {
 
         //act - arrange
         ServicioActualizarTrabajoDeGrado servicioActualizarTrabajoDeGrado = new ServicioActualizarTrabajoDeGrado(repositorioTrabajoDeGrado);
-        servicioActualizarTrabajoDeGrado.ejecutar(id,trabajoDeGrado);
+        servicioActualizarTrabajoDeGrado.ejecutar(id,trabajoDeGrado, LocalDateTime.now());
     }
 
 }
