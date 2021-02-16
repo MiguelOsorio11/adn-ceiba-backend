@@ -15,11 +15,12 @@ public class ServicioCrearTrabajoDeGradoTest {
     @Test
     public void validarCreacionTrabajoDeGradoTest(){
         //arrange
+        Long id = 1L;
         TrabajoDeGrado trabajoDeGrado = new TrabajoDeGradoTestDataBuilder().build();
         RepositorioTrabajoDeGrado repositorioTrabajoDeGrado = Mockito.mock(RepositorioTrabajoDeGrado.class);
 
         Mockito.when(repositorioTrabajoDeGrado.existe(trabajoDeGrado.getNombre())).thenReturn(Boolean.FALSE);
-        Mockito.when(repositorioTrabajoDeGrado.ejecutar(trabajoDeGrado)).thenReturn(trabajoDeGrado.getId());
+        Mockito.when(repositorioTrabajoDeGrado.ejecutar(trabajoDeGrado)).thenReturn(id);
 
         ServicioCrearTrabajoDeGrado servicioCrearTrabajoDeGrado = new ServicioCrearTrabajoDeGrado(repositorioTrabajoDeGrado);
 
@@ -27,7 +28,7 @@ public class ServicioCrearTrabajoDeGradoTest {
         Long idTrabajoDeGrado =  servicioCrearTrabajoDeGrado.ejecutar(trabajoDeGrado);
 
         //assert
-        assertEquals(trabajoDeGrado.getId(),idTrabajoDeGrado);
+        assertEquals(id,idTrabajoDeGrado);
     }
 
     @Test

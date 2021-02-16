@@ -21,7 +21,8 @@ create table trabajodegrado (
  estado varchar(100) not null,
  valor decimal(16,4) not null,
  fecha_confirmacion datetime,
- primary key (id)
+ primary key (id),
+ CONSTRAINT UC_TrabajoDeGrado UNIQUE (id,nombre)
 );
 
 Alter table trabajodegrado ADD FOREIGN KEY (id_usuario) REFERENCES usuario(id);

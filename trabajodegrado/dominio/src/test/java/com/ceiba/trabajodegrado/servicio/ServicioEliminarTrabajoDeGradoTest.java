@@ -11,16 +11,15 @@ public class ServicioEliminarTrabajoDeGradoTest {
     @Test
     public void validarEliminacionTrabajoDeGrado(){
         // arrange
+        Long id = 1L;
         TrabajoDeGrado trabajoDeGrado = new TrabajoDeGradoTestDataBuilder().build();
         RepositorioTrabajoDeGrado repositorioTrabajoDeGrado = Mockito.mock(RepositorioTrabajoDeGrado.class);
 
-        Mockito.doNothing().when(repositorioTrabajoDeGrado).eliminar(trabajoDeGrado.getId());
+        Mockito.doNothing().when(repositorioTrabajoDeGrado).eliminar(id);
 
-        // act
+        // act - arrange
         ServicioEliminarTrabajoDeGrado servicioEliminarTrabajoDeGrado = new ServicioEliminarTrabajoDeGrado(repositorioTrabajoDeGrado);
-        servicioEliminarTrabajoDeGrado.ejecutar(trabajoDeGrado.getId());
-
-        // act assert
+        servicioEliminarTrabajoDeGrado.ejecutar(id);
 
     }
 }

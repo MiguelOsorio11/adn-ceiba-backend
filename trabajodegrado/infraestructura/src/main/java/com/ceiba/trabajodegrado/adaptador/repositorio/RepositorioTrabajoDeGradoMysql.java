@@ -7,6 +7,10 @@ import com.ceiba.trabajodegrado.puerto.repositorio.RepositorioTrabajoDeGrado;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Repository
 public class RepositorioTrabajoDeGradoMysql implements RepositorioTrabajoDeGrado {
 
@@ -42,8 +46,17 @@ public class RepositorioTrabajoDeGradoMysql implements RepositorioTrabajoDeGrado
     }
 
     @Override
-    public void actualizar(TrabajoDeGrado trabajoDeGrado) {
-        this.customNamedParameterJdbcTemplate.actualizar(trabajoDeGrado,sqlActualizar);
+    public void actualizar(Long idTrabajoDeGrado, TrabajoDeGrado trabajoDeGrado, LocalDateTime fechaConfirmacion) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", idTrabajoDeGrado);
+        paramSource.addValue("fechaConfirmacion", fechaConfirmacion);
+        paramSource.addValue("idUsuario", trabajoDeGrado.getIdUsuario());
+        paramSource.addValue("nombre", trabajoDeGrado.getNombre());
+        paramSource.addValue("descripcion", trabajoDeGrado.getDescripcion());
+        paramSource.addValue("estado", trabajoDeGrado.getEstado());
+        paramSource.addValue("valor", trabajoDeGrado.getValor());
+
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlActualizar, paramSource);
     }
 
     @Override

@@ -21,6 +21,6 @@ public class ManejadorActualizarTrabajoDeGrado implements ManejadorComando<Coman
     @Override
     public void ejecutar(ComandoTrabajoDeGrado comandoTrabajoDeGrado) {
         TrabajoDeGrado trabajoDeGrado = this.fabricaTrabajoDeGrado.crear(comandoTrabajoDeGrado);
-        this.servicioActualizarTrabajoDeGrado.ejecutar(trabajoDeGrado);
+        this.servicioActualizarTrabajoDeGrado.ejecutar(comandoTrabajoDeGrado.getId(),trabajoDeGrado, comandoTrabajoDeGrado.getFechaConfirmacion());
     }
 }

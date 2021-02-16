@@ -1,6 +1,7 @@
 package com.ceiba.cita.modelo.entidad;
 
 
+import com.ceiba.utils.enums.MensajeGeneralEnum;
 import lombok.Getter;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
@@ -9,14 +10,13 @@ import java.time.LocalDateTime;
 @Getter
 public class Cita {
 
-    private static final String INGRESO_FECHA_CITA= "Se debe ingresar la fecha de la cita";
-
     private Long id;
     private Long idTrabajoDeGrado;
     private LocalDateTime fechaCita;
 
     public Cita(Long id, Long idTrabajoDeGrado, LocalDateTime fechaCita) {
-        validarObligatorio(fechaCita,INGRESO_FECHA_CITA);
+        validarObligatorio(idTrabajoDeGrado,MensajeGeneralEnum.INGRESO_ID_TRABAJO_DE_GRADO.getMensaje());
+        validarObligatorio(fechaCita, MensajeGeneralEnum.INGRESO_FECHA_CITA.getMensaje());
         this.id = id;
         this.idTrabajoDeGrado = idTrabajoDeGrado;
         this.fechaCita = fechaCita;

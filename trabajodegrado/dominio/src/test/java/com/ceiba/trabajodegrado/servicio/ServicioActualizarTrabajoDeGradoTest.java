@@ -8,32 +8,37 @@ import com.ceiba.trabajodegrado.servicio.testdatabuilder.TrabajoDeGradoTestDataB
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import java.time.LocalDateTime;
+
 public class ServicioActualizarTrabajoDeGradoTest {
 
     @Test
     public void validarTrabajoDeGradoExistiaPreviaTest(){
         //arrange
+        Long id = 1L;
         TrabajoDeGrado trabajoDeGrado = new TrabajoDeGradoTestDataBuilder().build();
         RepositorioTrabajoDeGrado repositorioTrabajoDeGrado = Mockito.mock(RepositorioTrabajoDeGrado.class);
 
-        Mockito.when(repositorioTrabajoDeGrado.existeExcluyendoId(trabajoDeGrado.getId(), trabajoDeGrado.getNombre())).thenReturn(Boolean.TRUE);
+        Mockito.when(repositorioTrabajoDeGrado.existeExcluyendoId(id, trabajoDeGrado.getNombre())).thenReturn(Boolean.TRUE);
 
         ServicioActualizarTrabajoDeGrado servicioActualizarTrabajoDeGrado = new ServicioActualizarTrabajoDeGrado(repositorioTrabajoDeGrado);
         // act- arrange
-        BasePrueba.assertThrows(() -> servicioActualizarTrabajoDeGrado.ejecutar(trabajoDeGrado), ExcepcionDuplicidad.class, ServicioActualizarTrabajoDeGrado.NOMBRE_DE_TRABAJO_DE_GRADO_EXISTENTE);
+        BasePrueba.assertThrows(() -> servicioActualizarTrabajoDeGrado.ejecutar(id,trabajoDeGrado,LocalDateTime.now()), ExcepcionDuplicidad.class, ServicioActualizarTrabajoDeGrado.NOMBRE_DE_TRABAJO_DE_GRADO_EXISTENTE);
     }
 
     @Test
     public void validacionActualizacionTrabajoDeGradoTest(){
         //arrange
+        Long id = 1L;
+        LocalDateTime fechaConfirmacion = LocalDateTime.now();
         TrabajoDeGrado trabajoDeGrado = new TrabajoDeGradoTestDataBuilder().build();
         RepositorioTrabajoDeGrado repositorioTrabajoDeGrado = Mockito.mock(RepositorioTrabajoDeGrado.class);
 
-        Mockito.when(repositorioTrabajoDeGrado.existeExcluyendoId(trabajoDeGrado.getId(), trabajoDeGrado.getNombre())).thenReturn(Boolean.FALSE);
+        Mockito.when(repositorioTrabajoDeGrado.existeExcluyendoId(id, trabajoDeGrado.getNombre())).thenReturn(Boolean.FALSE);
 
         //act - arrange
         ServicioActualizarTrabajoDeGrado servicioActualizarTrabajoDeGrado = new ServicioActualizarTrabajoDeGrado(repositorioTrabajoDeGrado);
-        servicioActualizarTrabajoDeGrado.ejecutar(trabajoDeGrado);
+        servicioActualizarTrabajoDeGrado.ejecutar(id,trabajoDeGrado, LocalDateTime.now());
     }
 
 }

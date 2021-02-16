@@ -1,41 +1,39 @@
 package com.ceiba.trabajodegrado.modelo.entidad;
 
 
+import com.ceiba.utils.enums.MensajeGeneralEnum;
 import lombok.Getter;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
+import static com.ceiba.dominio.ValidadorArgumento.validarPositivo;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Getter
 public class TrabajoDeGrado {
 
-    private static final String INGRESO_DE_NOMBRE = "Se debe ingresar el nombre del proyecto";
-
-    private Long id;
     private Long idUsuario;
     private String nombre;
     private String descripcion;
     private String estado;
     private BigDecimal valor;
-    private LocalDateTime fechaConfirmacion;
 
-    public TrabajoDeGrado(Long id, Long idUsuario, String nombre, String descripcion, String estado, BigDecimal valor, LocalDateTime fechaConfirmacion) {
-        validarObligatorio(nombre,INGRESO_DE_NOMBRE);
-        this.id = id;
+    public TrabajoDeGrado(Long idUsuario, String nombre, String descripcion, String estado, BigDecimal valor) {
+        validarObligatorio(idUsuario,MensajeGeneralEnum.INGRESO_ID_USUARIO.getMensaje());
+        validarObligatorio(nombre, MensajeGeneralEnum.INGRESO_DE_NOMBRE.getMensaje());
+        validarObligatorio(estado, MensajeGeneralEnum.INGRESO_DE_ESTADO.getMensaje());
+        validarObligatorio(valor, MensajeGeneralEnum.INGRESO_DE_VALOR.getMensaje());
+        validarPositivo(valor.doubleValue(), MensajeGeneralEnum.INGRESO_VALOR_POSITIVO.getMensaje());
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
         this.valor = valor;
-        this.fechaConfirmacion = fechaConfirmacion;
     }
 
     @Override
     public String toString() {
         return "TrabajoDeGrado{" +
-                "id=" + id +
-                ", idUsuario=" + idUsuario +
+                "idUsuario=" + idUsuario +
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", estado='" + estado + '\'' +
