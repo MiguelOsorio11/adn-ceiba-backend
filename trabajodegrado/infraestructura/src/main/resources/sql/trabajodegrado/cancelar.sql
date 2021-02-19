@@ -1,0 +1,1 @@
+update trabajodegrado set estado = :estado where id = :id
