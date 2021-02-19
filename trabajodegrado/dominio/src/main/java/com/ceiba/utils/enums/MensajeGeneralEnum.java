@@ -14,7 +14,10 @@ public enum MensajeGeneralEnum {
 
     //Mensajes Cita
     INGRESO_ID_TRABAJO_DE_GRADO("Se debe asociar un trabajo de grado a la cita"),
-    INGRESO_FECHA_CITA("Se debe ingresar la fecha de la cita");
+    INGRESO_FECHA_CITA("Se debe ingresar la fecha de la cita"),
+    ERROR_CITA_FIN_DE_SEMANA("La cita solo se puede agendar de lunes a viernes"),
+    EXISTECIA_HORA_CITA("Ya se encuentra seleccionada la hora de la cita"),
+    FECHA_CITA_MENOR_ACTUAL("La fecha de la cita debe ser mayor o igual del dia actual");
 
     private final String mensaje;
 

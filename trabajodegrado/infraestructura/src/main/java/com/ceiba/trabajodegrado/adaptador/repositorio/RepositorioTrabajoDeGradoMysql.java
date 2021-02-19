@@ -4,11 +4,10 @@ import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.trabajodegrado.modelo.entidad.TrabajoDeGrado;
 import com.ceiba.trabajodegrado.puerto.repositorio.RepositorioTrabajoDeGrado;
+import com.ceiba.utils.enums.EstadoTrabajoDeGradoEnum;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Repository
@@ -35,6 +34,9 @@ public class RepositorioTrabajoDeGradoMysql implements RepositorioTrabajoDeGrado
 
     @SqlStatement(namespace = NAMESPACE, value = "detallar")
     private static String sqlDetalle;
+
+    @SqlStatement(namespace = NAMESPACE, value = "cancelar")
+    private static String sqlCancelarTrabajo;
 
     public RepositorioTrabajoDeGradoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -90,5 +92,14 @@ public class RepositorioTrabajoDeGradoMysql implements RepositorioTrabajoDeGrado
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("idTrabajoDeGrado", idTrabajoDeGrado);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlDetalle, paramSource, new MapeoTrabajoDeGrado());
+    }
+
+    @Override
+    public void cancelar(Long id, EstadoTrabajoDeGradoEnum estado) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+        paramSource.addValue("estado", estado.getMensaje());
+
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlCancelarTrabajo, paramSource);
     }
 }
