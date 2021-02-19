@@ -1,6 +1,5 @@
 package com.ceiba.trabajodegrado.modelo.dto;
 
-import com.ceiba.utils.enums.EstadoTrabajoDeGradoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

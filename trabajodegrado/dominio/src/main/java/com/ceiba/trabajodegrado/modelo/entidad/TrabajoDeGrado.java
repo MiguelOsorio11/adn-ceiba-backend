@@ -1,7 +1,5 @@
 package com.ceiba.trabajodegrado.modelo.entidad;
 
-
-import com.ceiba.utils.enums.EstadoTrabajoDeGradoEnum;
 import com.ceiba.utils.enums.MensajeGeneralEnum;
 import lombok.Getter;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
