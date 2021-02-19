@@ -12,7 +12,7 @@ public class ComandoCitaTestDataBuilder {
 
     public ComandoCitaTestDataBuilder (){
         idTrabajoDeGrado = 1L;
-        fechaCita = LocalDateTime.of(2021,02,15,12,30);
+        fechaCita = LocalDateTime.of(2021,03,10,10,30);
     }
 
     public ComandoCitaTestDataBuilder conId(Long id){
