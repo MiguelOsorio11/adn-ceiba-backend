@@ -4,6 +4,7 @@ import com.ceiba.ApplicationMock;
 import com.ceiba.trabajodegrado.comando.ComandoTrabajoDeGrado;
 import com.ceiba.trabajodegrado.servicio.testdatabuilder.ComandoTrabajoDeGradoTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.tomcat.jni.Local;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.time.LocalDateTime;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -66,6 +69,20 @@ public class ComandoControladorTrabajoDeGradoTest {
         mockMvc.perform(delete(URL_TRABAJO_GRADO+"/{id}",id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void cancelar() throws Exception{
+
+        // arrange
+        LocalDateTime fechaConfirmacion = LocalDateTime.of(2021,02,19,10,10);
+        ComandoTrabajoDeGrado comandoTrabajoDeGrado = new ComandoTrabajoDeGradoTestDataBuilder().conFechaConfirmacion(fechaConfirmacion).build();
+
+        // act - assert
+        mockMvc.perform(put(URL_TRABAJO_GRADO+"/cancelar")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(comandoTrabajoDeGrado)))
                 .andExpect(status().isOk());
     }
 
