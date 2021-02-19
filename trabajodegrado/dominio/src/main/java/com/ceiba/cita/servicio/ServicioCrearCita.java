@@ -3,6 +3,7 @@ package com.ceiba.cita.servicio;
 import com.ceiba.cita.modelo.entidad.Cita;
 import com.ceiba.cita.puerto.repositorio.RepositorioCita;
 import com.ceiba.dominio.excepcion.ExcepcionCitaInvalida;
+import com.ceiba.utils.enums.MensajeGeneralEnum;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -12,10 +13,6 @@ import java.util.EnumSet;
 import java.util.Set;
 
 public class ServicioCrearCita {
-
-    public static final String ERROR_CITA_FIN_DE_SEMANA ="La cita solo se puede agendar de lunes a viernes";
-    public static final String EXISTECIA_HORA_CITA = "Ya se encuentra seleccionada la hora de la cita";
-
 
     private RepositorioCita repositorioCine;
 
@@ -37,7 +34,7 @@ public class ServicioCrearCita {
         Set<DayOfWeek> weekend = EnumSet.of( DayOfWeek.SATURDAY , DayOfWeek.SUNDAY );
 
         if(weekend.contains(dayOfWeek))
-            throw new ExcepcionCitaInvalida(ERROR_CITA_FIN_DE_SEMANA);
+            throw new ExcepcionCitaInvalida(MensajeGeneralEnum.ERROR_CITA_FIN_DE_SEMANA.getMensaje());
 
     }
 
@@ -45,7 +42,7 @@ public class ServicioCrearCita {
 
         boolean existeCita = this.repositorioCine.existeHoraCita(fechaCita);
         if(existeCita)
-            throw new ExcepcionCitaInvalida(EXISTECIA_HORA_CITA);
+            throw new ExcepcionCitaInvalida(MensajeGeneralEnum.EXISTECIA_HORA_CITA.getMensaje());
     }
 
 }

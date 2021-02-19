@@ -1,6 +1,7 @@
 package com.ceiba.trabajodegrado.puerto.repositorio;
 
 import com.ceiba.trabajodegrado.modelo.entidad.TrabajoDeGrado;
+import com.ceiba.utils.enums.EstadoTrabajoDeGradoEnum;
 
 import java.time.LocalDateTime;
 
@@ -17,4 +18,6 @@ public interface RepositorioTrabajoDeGrado {
     boolean existeExcluyendoId(Long id, String nombre);
 
     TrabajoDeGrado obtener(Long idTrabajoDeGrado);
+
+    void cancelar(Long id, EstadoTrabajoDeGradoEnum estado);
 }

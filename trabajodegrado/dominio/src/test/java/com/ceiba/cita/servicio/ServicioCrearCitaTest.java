@@ -7,6 +7,7 @@ import com.ceiba.cita.servicio.testdatabuilder.CitaTestDataBuilder;
 import static org.junit.Assert.assertEquals;
 
 import com.ceiba.dominio.excepcion.ExcepcionCitaInvalida;
+import com.ceiba.utils.enums.MensajeGeneralEnum;
 import org.junit.Test;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.mock;
@@ -38,7 +39,7 @@ public class ServicioCrearCitaTest {
 
         // act- arrange
         ServicioCrearCita servicioCrearCita = new ServicioCrearCita(repositorioCita);
-        BasePrueba.assertThrows(() -> servicioCrearCita.ejecutar(cita), ExcepcionCitaInvalida.class, ServicioCrearCita.ERROR_CITA_FIN_DE_SEMANA);
+        BasePrueba.assertThrows(() -> servicioCrearCita.ejecutar(cita), ExcepcionCitaInvalida.class, MensajeGeneralEnum.ERROR_CITA_FIN_DE_SEMANA.getMensaje());
     }
 
     @Test
@@ -51,6 +52,6 @@ public class ServicioCrearCitaTest {
 
         // act- arrange
         ServicioCrearCita servicioCrearCita = new ServicioCrearCita(repositorioCita);
-        BasePrueba.assertThrows(() -> servicioCrearCita.ejecutar(cita), ExcepcionCitaInvalida.class, ServicioCrearCita.EXISTECIA_HORA_CITA);
+        BasePrueba.assertThrows(() -> servicioCrearCita.ejecutar(cita), ExcepcionCitaInvalida.class, MensajeGeneralEnum.EXISTECIA_HORA_CITA.getMensaje());
     }
 }

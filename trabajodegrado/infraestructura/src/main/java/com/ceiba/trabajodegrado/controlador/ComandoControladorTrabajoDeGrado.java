@@ -3,6 +3,7 @@ package com.ceiba.trabajodegrado.controlador;
 import com.ceiba.ComandoRespuesta;
 import com.ceiba.trabajodegrado.comando.ComandoTrabajoDeGrado;
 import com.ceiba.trabajodegrado.comando.manejador.ManejadorActualizarTrabajoDeGrado;
+import com.ceiba.trabajodegrado.comando.manejador.ManejadorCancelarTrabajoDeGrado;
 import com.ceiba.trabajodegrado.comando.manejador.ManejadorCrearTrabajoDeGrado;
 import com.ceiba.trabajodegrado.comando.manejador.ManejadorEliminarTrabajoDeGrado;
 import io.swagger.annotations.Api;
@@ -19,14 +20,17 @@ public class ComandoControladorTrabajoDeGrado {
     private ManejadorCrearTrabajoDeGrado manejadorCrearTrabajoDeGrado;
     private ManejadorEliminarTrabajoDeGrado manejadorEliminarTrabajoDeGrado;
     private ManejadorActualizarTrabajoDeGrado manejadorActualizarTrabajoDeGrado;
+    private ManejadorCancelarTrabajoDeGrado manejadorCancelarTrabajoDeGrado;
 
     @Autowired
     public ComandoControladorTrabajoDeGrado(ManejadorCrearTrabajoDeGrado manejadorCrearTrabajoDeGrado,
                                             ManejadorEliminarTrabajoDeGrado manejadorEliminarTrabajoDeGrado,
-                                            ManejadorActualizarTrabajoDeGrado manejadorActualizarTrabajoDeGrado) {
+                                            ManejadorActualizarTrabajoDeGrado manejadorActualizarTrabajoDeGrado,
+                                            ManejadorCancelarTrabajoDeGrado manejadorCancelarTrabajoDeGrado) {
         this.manejadorCrearTrabajoDeGrado = manejadorCrearTrabajoDeGrado;
         this.manejadorEliminarTrabajoDeGrado = manejadorEliminarTrabajoDeGrado;
         this.manejadorActualizarTrabajoDeGrado = manejadorActualizarTrabajoDeGrado;
+        this.manejadorCancelarTrabajoDeGrado = manejadorCancelarTrabajoDeGrado;
     }
 
     @PostMapping
@@ -51,6 +55,15 @@ public class ComandoControladorTrabajoDeGrado {
             notes = "Realiza la actualizacion del trabajo de grado en el sistema")
     public void actualizar(@RequestBody ComandoTrabajoDeGrado comandoTrabajoDeGrado){
         this.manejadorActualizarTrabajoDeGrado.ejecutar(comandoTrabajoDeGrado);
+    }
+
+    @PutMapping("/cancelar")
+    @ApiOperation(
+            value = "Cancelacion trabajo de grado",
+            notes = "Realiza la cancelacion del grabajo de grado en el sistema"
+    )
+    public void cancelar(@RequestBody ComandoTrabajoDeGrado comandoTrabajoDeGrado){
+        this.manejadorCancelarTrabajoDeGrado.ejecutar(comandoTrabajoDeGrado);
     }
 
 }

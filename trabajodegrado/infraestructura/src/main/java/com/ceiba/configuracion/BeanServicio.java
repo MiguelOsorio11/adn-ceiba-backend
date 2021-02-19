@@ -4,6 +4,7 @@ import com.ceiba.cita.puerto.repositorio.RepositorioCita;
 import com.ceiba.cita.servicio.ServicioCrearCita;
 import com.ceiba.trabajodegrado.puerto.repositorio.RepositorioTrabajoDeGrado;
 import com.ceiba.trabajodegrado.servicio.ServicioActualizarTrabajoDeGrado;
+import com.ceiba.trabajodegrado.servicio.ServicioCancelarTrabajoDeGrado;
 import com.ceiba.trabajodegrado.servicio.ServicioCrearTrabajoDeGrado;
 import com.ceiba.trabajodegrado.servicio.ServicioEliminarTrabajoDeGrado;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
@@ -50,6 +51,11 @@ public class BeanServicio {
     @Bean
     public ServicioEliminarTrabajoDeGrado servicioEliminarTrabajoDeGrado(RepositorioTrabajoDeGrado repositorioTrabajoDeGrado){
         return new ServicioEliminarTrabajoDeGrado(repositorioTrabajoDeGrado);
+    }
+
+    @Bean
+    public ServicioCancelarTrabajoDeGrado servicioCancelarTrabajoDeGrado(RepositorioTrabajoDeGrado repositorioTrabajoDeGrado){
+        return new ServicioCancelarTrabajoDeGrado(repositorioTrabajoDeGrado);
     }
 
     //======================================================

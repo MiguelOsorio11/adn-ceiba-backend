@@ -2,6 +2,7 @@ package com.ceiba.trabajodegrado.servicio.testdatabuilder;
 
 import com.ceiba.trabajodegrado.modelo.entidad.TrabajoDeGrado;
 import com.ceiba.utils.enums.EstadoTrabajoDeGradoEnum;
+import org.mockito.cglib.core.Local;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -22,7 +23,6 @@ public class TrabajoDeGradoTestDataBuilder {
     private String descripcion;
     private String estado;
     private BigDecimal valor;
-    private LocalDateTime fechaConfirmacion;
 
     public TrabajoDeGradoTestDataBuilder(){
         idUsuario = ID_USUARIO;
@@ -60,5 +60,6 @@ public class TrabajoDeGradoTestDataBuilder {
     public TrabajoDeGrado conValorNull(){
         return new TrabajoDeGrado(idUsuario,nombre,descripcion,estado,null);
     }
+
 
 }

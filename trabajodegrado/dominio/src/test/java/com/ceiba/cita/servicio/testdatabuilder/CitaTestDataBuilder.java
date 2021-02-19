@@ -1,7 +1,6 @@
 package com.ceiba.cita.servicio.testdatabuilder;
 
 import com.ceiba.cita.modelo.entidad.Cita;
-import jdk.nashorn.internal.objects.annotations.Getter;
 
 import java.time.LocalDateTime;
 
@@ -9,10 +8,11 @@ public class CitaTestDataBuilder {
 
     private static final Long ID =1L;
     private static final Long ID_TRABAJO_DE_GRADO = 1L;
-    private static final LocalDateTime FECHA_CITA = LocalDateTime.of(2021,02,15,12,30);
+    private static final LocalDateTime FECHA_CITA = LocalDateTime.of(2021,03,18,12,30);
 
-    private static final LocalDateTime FECHA_CITA_DIA_INCORRECTO = LocalDateTime.of(2021,02,13,12,30);
-    private static final LocalDateTime FECHA_CITA_HORA_INCORRECTA = LocalDateTime.of(2021,02,15,2,30);
+    private static final LocalDateTime FECHA_CITA_DIA_INCORRECTO = LocalDateTime.of(2021,03,13,12,30);
+    private static final LocalDateTime FECHA_CITA_HORA_INCORRECTA = LocalDateTime.of(2021,03,15,2,30);
+    private static final LocalDateTime FECHA_CITA_INFERIOR_DIA_ACTUAL = LocalDateTime.of(2021,02,15,10,20);
 
 
     private Long id;
@@ -37,6 +37,18 @@ public class CitaTestDataBuilder {
     public CitaTestDataBuilder conFechaCitaHoraIncorrecta(){
         this.fechaCita = FECHA_CITA_HORA_INCORRECTA;
         return this;
+    }
+
+    public Cita conIdTrabajoDeGradoNull(){
+        return new Cita(id,null,fechaCita);
+    }
+
+    public Cita conFechaNull(){
+        return new Cita(id,idTrabajoDeGrado,null);
+    }
+
+    public Cita conFechaConfirmacionMenorActual(){
+        return new Cita(id,idTrabajoDeGrado,FECHA_CITA_INFERIOR_DIA_ACTUAL);
     }
 
 }
