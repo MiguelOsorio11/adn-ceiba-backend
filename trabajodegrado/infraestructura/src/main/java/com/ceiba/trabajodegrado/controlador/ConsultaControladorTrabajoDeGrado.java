@@ -4,10 +4,7 @@ import com.ceiba.trabajodegrado.consulta.ManejadorListarTrabajoDeGrado;
 import com.ceiba.trabajodegrado.modelo.dto.DtoTrabajoDeGrado;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

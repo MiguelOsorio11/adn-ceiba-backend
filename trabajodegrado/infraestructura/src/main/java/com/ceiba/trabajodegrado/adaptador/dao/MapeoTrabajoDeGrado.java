@@ -2,6 +2,7 @@ package com.ceiba.trabajodegrado.adaptador.dao;
 
 import com.ceiba.infraestructura.jdbc.MapperResult;
 import com.ceiba.trabajodegrado.modelo.dto.DtoTrabajoDeGrado;
+import com.ceiba.utils.enums.EstadoTrabajoDeGradoEnum;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.math.BigDecimal;
