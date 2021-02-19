@@ -27,4 +27,17 @@ public class ServicioCancelarTrabajoDeGradoTest {
         BasePrueba.assertThrows(() -> servicioCancelarTrabajoDeGrado.ejecutar(id,EstadoTrabajoDeGradoEnum.CANCELADO,fechaConfirmacion), ExcepcionCancelacionTrabajoDeGrado.class, ServicioCancelarTrabajoDeGrado.CANCELACION_INVALIDA);
     }
 
+    @Test
+    public void validarCancelarTrabajoDeGrado(){
+        // arrange
+        Long id = 1L;
+        LocalDateTime fechaConfirmacion = LocalDateTime.of(2021,02,19,10,20);
+        TrabajoDeGrado trabajoDeGrado = new TrabajoDeGradoTestDataBuilder().build();
+        RepositorioTrabajoDeGrado repositorioTrabajoDeGrado = Mockito.mock(RepositorioTrabajoDeGrado.class);
+
+        // act- arrange
+        ServicioCancelarTrabajoDeGrado servicioCancelarTrabajoDeGrado = new ServicioCancelarTrabajoDeGrado(repositorioTrabajoDeGrado);
+        servicioCancelarTrabajoDeGrado.ejecutar(id,EstadoTrabajoDeGradoEnum.CANCELADO,fechaConfirmacion);
+    }
+
 }

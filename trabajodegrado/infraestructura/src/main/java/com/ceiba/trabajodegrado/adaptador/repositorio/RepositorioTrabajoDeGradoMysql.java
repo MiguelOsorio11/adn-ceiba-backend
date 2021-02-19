@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 public class RepositorioTrabajoDeGradoMysql implements RepositorioTrabajoDeGrado {
 
     private static final String NAMESPACE = "trabajodegrado";
+    private static final String NAME_TAG ="nombre";
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
@@ -53,7 +54,7 @@ public class RepositorioTrabajoDeGradoMysql implements RepositorioTrabajoDeGrado
         paramSource.addValue("id", idTrabajoDeGrado);
         paramSource.addValue("fechaConfirmacion", fechaConfirmacion);
         paramSource.addValue("idUsuario", trabajoDeGrado.getIdUsuario());
-        paramSource.addValue("nombre", trabajoDeGrado.getNombre());
+        paramSource.addValue(NAME_TAG, trabajoDeGrado.getNombre());
         paramSource.addValue("descripcion", trabajoDeGrado.getDescripcion());
         paramSource.addValue("estado", trabajoDeGrado.getEstado());
         paramSource.addValue("valor", trabajoDeGrado.getValor());
@@ -72,7 +73,7 @@ public class RepositorioTrabajoDeGradoMysql implements RepositorioTrabajoDeGrado
     @Override
     public boolean existe(String nombre) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("nombre", nombre);
+        paramSource.addValue(NAME_TAG, nombre);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste, paramSource,Boolean.class);
     }
@@ -81,7 +82,7 @@ public class RepositorioTrabajoDeGradoMysql implements RepositorioTrabajoDeGrado
     public boolean existeExcluyendoId(Long id, String nombre) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-        paramSource.addValue("nombre", nombre);
+        paramSource.addValue(NAME_TAG, nombre);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId, paramSource,Boolean.class);
     }
