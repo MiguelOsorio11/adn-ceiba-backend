@@ -76,7 +76,7 @@ public class ComandoControladorTrabajoDeGradoTest {
     public void cancelar() throws Exception{
 
         // arrange
-        LocalDateTime fechaConfirmacion = LocalDateTime.of(2021,02,19,10,10);
+        LocalDateTime fechaConfirmacion = LocalDateTime.of(2021,02,21,10,10);
         ComandoTrabajoDeGrado comandoTrabajoDeGrado = new ComandoTrabajoDeGradoTestDataBuilder().conFechaConfirmacion(fechaConfirmacion).build();
 
         // act - assert
