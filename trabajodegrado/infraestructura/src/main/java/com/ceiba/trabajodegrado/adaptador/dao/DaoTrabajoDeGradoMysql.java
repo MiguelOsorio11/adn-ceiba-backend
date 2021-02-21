@@ -19,6 +19,9 @@ public class DaoTrabajoDeGradoMysql implements DaoTrabajoDeGrado {
     @SqlStatement(namespace = NAMESPACE, value ="listarPorUsuario")
     private static String slqListar;
 
+    @SqlStatement(namespace = NAMESPACE, value ="obtenerTrabajoDeGrado")
+    private static String slqObtenerTg;
+
     public DaoTrabajoDeGradoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -29,5 +32,12 @@ public class DaoTrabajoDeGradoMysql implements DaoTrabajoDeGrado {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("idUsuario", idUsuario);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(slqListar, paramSource, new MapeoTrabajoDeGrado());
+    }
+
+    @Override
+    public DtoTrabajoDeGrado obtener(Long idTrabajoDeGradp) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("idTrabajoDeGrado", idTrabajoDeGradp);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(slqObtenerTg, paramSource, new MapeoTrabajoDeGrado()).get(0);
     }
 }

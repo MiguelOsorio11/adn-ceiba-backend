@@ -7,4 +7,6 @@ import java.util.List;
 public interface DaoTrabajoDeGrado {
 
     List<DtoTrabajoDeGrado> listar(Long idUsuario);
+
+    DtoTrabajoDeGrado obtener(Long idTrabajoDegRA);
 }
