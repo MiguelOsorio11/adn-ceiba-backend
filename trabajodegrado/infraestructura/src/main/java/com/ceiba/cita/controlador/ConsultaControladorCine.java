@@ -5,8 +5,11 @@ import com.ceiba.cita.modelo.dto.DtoCita;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -20,12 +23,15 @@ public class ConsultaControladorCine {
         this.manejadorListarCita = manejadorListarCita;
     }
 
-    @GetMapping
+    @GetMapping(value = "/{idUsuario}/{fechaActual}")
     @ApiOperation(
             value = "Listar citas",
             notes = "Lista todas las citas almacenadass en el sistema"
     )
-    public List<DtoCita> listar() {
-        return this.manejadorListarCita.ejecutar();
+    public List<DtoCita> listar(@PathVariable Long idUsuario, @PathVariable String fechaActual) {
+        LocalDate fechaLocalDate = LocalDate.parse(fechaActual);
+        return this.manejadorListarCita.ejecutar(idUsuario,fechaLocalDate);
     }
+
+
 }

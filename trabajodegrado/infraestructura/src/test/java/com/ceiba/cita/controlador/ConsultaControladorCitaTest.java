@@ -30,7 +30,7 @@ public class ConsultaControladorCitaTest {
         //arrenge
 
         //act - assert
-        mockMvc.perform(get("/cita")
+        mockMvc.perform(get("/cita/1/2021-03-11")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
