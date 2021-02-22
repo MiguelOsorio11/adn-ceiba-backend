@@ -17,7 +17,8 @@ public enum MensajeGeneralEnum {
     INGRESO_FECHA_CITA("Se debe ingresar la fecha de la cita"),
     ERROR_CITA_FIN_DE_SEMANA("La cita solo se puede agendar de lunes a viernes"),
     EXISTECIA_HORA_CITA("Ya se encuentra seleccionada la hora de la cita"),
-    FECHA_CITA_MENOR_ACTUAL("La fecha de la cita debe ser mayor o igual del dia actual");
+    FECHA_CITA_MENOR_ACTUAL("La fecha de la cita debe ser mayor o igual del dia actual"),
+    EXISTENCIA_TRABAJO_GRADO("No se puede crear la cita debido a que el trabajo de grado no existe en base de datos");
 
     private final String mensaje;
 

@@ -9,4 +9,6 @@ public interface DaoTrabajoDeGrado {
     List<DtoTrabajoDeGrado> listar(Long idUsuario);
 
     DtoTrabajoDeGrado obtener(Long idTrabajoDegRA);
+
+    List<DtoTrabajoDeGrado> listarTrabajosSinCitas();
 }

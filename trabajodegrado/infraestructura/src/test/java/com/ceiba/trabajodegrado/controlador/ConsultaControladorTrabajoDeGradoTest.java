@@ -44,4 +44,14 @@ public class ConsultaControladorTrabajoDeGradoTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    public void listarSinCita() throws Exception {
+        // arrange
+
+        // act - assert
+        mocMvc.perform(get("/trabajodegrado/sinCita")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
 }

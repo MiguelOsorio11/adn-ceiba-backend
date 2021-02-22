@@ -11,4 +11,6 @@ public interface RepositorioCita {
     void actualizar(Cita cita);
 
     boolean existeHoraCita(LocalDateTime horaCita);
+
+    boolean verificarExistenciaTrabajoDeGrado(Long id);
 }
