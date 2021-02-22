@@ -25,6 +25,10 @@ public class RepositorioCineMysql implements RepositorioCita {
     @SqlStatement(namespace = NAMESPACE, value = "existeCitaDiaHora")
     private static String sqlExisteCitaDiaHora;
 
+    @SqlStatement(namespace = NAMESPACE, value = "existeTrabajoDeGrado")
+    private static String sqlExisteTrabajoDeGrado;
+
+
     public RepositorioCineMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -47,5 +51,13 @@ public class RepositorioCineMysql implements RepositorioCita {
         paramSource.addValue("fechaCita", fechaCita);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteCitaDiaHora, paramSource,Boolean.class);
+    }
+
+    @Override
+    public boolean verificarExistenciaTrabajoDeGrado(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("idTrabajoDeGrado", id);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteTrabajoDeGrado, paramSource,Boolean.class);
     }
 }

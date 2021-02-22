@@ -3,6 +3,7 @@ package com.ceiba.cita.servicio;
 import com.ceiba.cita.modelo.entidad.Cita;
 import com.ceiba.cita.puerto.repositorio.RepositorioCita;
 import com.ceiba.dominio.excepcion.ExcepcionCitaInvalida;
+import com.ceiba.dominio.excepcion.ExcepcionSinDatos;
 import com.ceiba.utils.enums.MensajeGeneralEnum;
 
 import java.time.DayOfWeek;
@@ -22,6 +23,7 @@ public class ServicioCrearCita {
 
     public Long ejecutar(Cita cita){
 
+        validarExistenciaTrabajoDeGrado(cita.getIdTrabajoDeGrado());
         validarDiaEntreSemana(cita.getFechaCita());
         validarExistenciaCita(cita.getFechaCita());
         return this.repositorioCine.ejecutar(cita);
@@ -44,5 +46,13 @@ public class ServicioCrearCita {
         if(existeCita)
             throw new ExcepcionCitaInvalida(MensajeGeneralEnum.EXISTECIA_HORA_CITA.getMensaje());
     }
+
+    private void validarExistenciaTrabajoDeGrado(Long id){
+
+        boolean existeTrabajoDeGrado = this.repositorioCine.verificarExistenciaTrabajoDeGrado(id);
+        if(!existeTrabajoDeGrado)
+            throw new ExcepcionSinDatos(MensajeGeneralEnum.EXISTENCIA_TRABAJO_GRADO.getMensaje());
+    }
+
 
 }
