@@ -4,7 +4,6 @@ import com.ceiba.trabajodegrado.modelo.dto.DtoTrabajoDeGrado;
 import com.ceiba.trabajodegrado.puerto.dao.DaoTrabajoDeGrado;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 @Component
 public class ManejadorObtenerTrabajoDeGrado {
 
