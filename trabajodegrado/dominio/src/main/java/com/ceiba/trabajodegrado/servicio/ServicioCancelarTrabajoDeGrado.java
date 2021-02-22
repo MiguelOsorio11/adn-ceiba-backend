@@ -5,7 +5,7 @@ import com.ceiba.trabajodegrado.puerto.repositorio.RepositorioTrabajoDeGrado;
 import com.ceiba.utils.enums.EstadoTrabajoDeGradoEnum;
 
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
+import java.time.ZoneId;
 import java.util.concurrent.TimeUnit;
 
 public class ServicioCancelarTrabajoDeGrado {
@@ -25,11 +25,11 @@ public class ServicioCancelarTrabajoDeGrado {
 
     private void validarFechaConfirmacionNoMayor24Horas(LocalDateTime fechaConfirmacion){
 
-        final ZoneOffset zoneOffset = ZoneOffset.UTC;
-        LocalDateTime fechaAhora = LocalDateTime.now(zoneOffset).withSecond(00);
-        fechaConfirmacion.atOffset(zoneOffset);
-        long horaFechaAhora = TimeUnit.MILLISECONDS.toHours(fechaConfirmacion.toInstant(zoneOffset).toEpochMilli());
-        long horaFechaConfirmacion = TimeUnit.MILLISECONDS.toHours(fechaAhora.toInstant(zoneOffset).toEpochMilli());
+        LocalDateTime fechaAhora = LocalDateTime.now();
+        LocalDateTime fechaActualSinSegundos = LocalDateTime.of(fechaAhora.getYear(),fechaAhora.getMonth(),fechaAhora.getDayOfMonth(),fechaAhora.getHour(),fechaAhora.getMinute());
+        //fechaConfirmacion.atOffset(zoneOffset);
+        long horaFechaAhora = TimeUnit.MILLISECONDS.toHours(fechaActualSinSegundos.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+        long horaFechaConfirmacion = TimeUnit.MILLISECONDS.toHours(fechaConfirmacion.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
         long operacion = Math.abs( horaFechaAhora - horaFechaConfirmacion);
         if(operacion > 24)
             throw new ExcepcionCancelacionTrabajoDeGrado(CANCELACION_INVALIDA);
