@@ -4,7 +4,6 @@ import com.ceiba.ApplicationMock;
 import com.ceiba.trabajodegrado.comando.ComandoTrabajoDeGrado;
 import com.ceiba.trabajodegrado.servicio.testdatabuilder.ComandoTrabajoDeGradoTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.tomcat.jni.Local;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +75,7 @@ public class ComandoControladorTrabajoDeGradoTest {
     public void cancelar() throws Exception{
 
         // arrange
-        LocalDateTime fechaConfirmacion = LocalDateTime.of(2021,02,21,10,10);
+        LocalDateTime fechaConfirmacion = LocalDateTime.of(2021,02,23,07,10);
         ComandoTrabajoDeGrado comandoTrabajoDeGrado = new ComandoTrabajoDeGradoTestDataBuilder().conFechaConfirmacion(fechaConfirmacion).build();
 
         // act - assert
