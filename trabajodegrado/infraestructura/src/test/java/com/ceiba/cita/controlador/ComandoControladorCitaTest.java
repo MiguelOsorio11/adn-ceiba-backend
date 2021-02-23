@@ -3,8 +3,6 @@ package com.ceiba.cita.controlador;
 import com.ceiba.ApplicationMock;
 import com.ceiba.cita.ComandoCita;
 import com.ceiba.cita.servicio.testdatabuilder.ComandoCitaTestDataBuilder;
-import com.ceiba.trabajodegrado.comando.ComandoTrabajoDeGrado;
-import com.ceiba.trabajodegrado.servicio.testdatabuilder.ComandoTrabajoDeGradoTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
