@@ -31,7 +31,7 @@ public class ServicioCancelarTrabajoDeGradoTest {
     public void validarCancelarTrabajoDeGrado(){
         // arrange
         Long id = 1L;
-        LocalDateTime fechaConfirmacion = LocalDateTime.of(2021,02,21,10,20);
+        LocalDateTime fechaConfirmacion = LocalDateTime.of(2021,02,23,7,00);
         TrabajoDeGrado trabajoDeGrado = new TrabajoDeGradoTestDataBuilder().build();
         RepositorioTrabajoDeGrado repositorioTrabajoDeGrado = Mockito.mock(RepositorioTrabajoDeGrado.class);
 
