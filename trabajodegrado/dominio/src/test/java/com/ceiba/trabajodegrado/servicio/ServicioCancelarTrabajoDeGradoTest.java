@@ -2,7 +2,6 @@ package com.ceiba.trabajodegrado.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionCancelacionTrabajoDeGrado;
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.trabajodegrado.modelo.entidad.TrabajoDeGrado;
 import com.ceiba.trabajodegrado.puerto.repositorio.RepositorioTrabajoDeGrado;
 import com.ceiba.trabajodegrado.servicio.testdatabuilder.TrabajoDeGradoTestDataBuilder;
